@@ -10,10 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-# settings.py
-
-
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ChatApp',
     'channels',
-   
 ]
 
 MIDDLEWARE = [
@@ -97,9 +92,9 @@ CHANNEL_LAYERS = {
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'postgres',
-       'USER': 'postgres',
-       'PASSWORD':'admin',
+       'NAME': 'academate',
+       'USERNAME': 'academate_user',
+       'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
        'HOST': 'localhost',
        'PORT': '5432'
    }
