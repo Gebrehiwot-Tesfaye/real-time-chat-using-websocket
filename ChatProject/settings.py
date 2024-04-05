@@ -9,9 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import dj_database_url
+
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-=m1^$ql(%@l&m_d()&st30d!b^hc5cjl5@9!+*mlheo)v&o(y='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG','    False').lower() == 'true'
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS','*').split(',') 
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -92,18 +91,19 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'academate',
-       'USERNAME': 'academate_user',
-       'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'postgres',
+       'USER': 'postgres',
+       'PASSWORD':'admin',
        'HOST': 'localhost',
-       'PORT': '5432'
+       'PORT': ''
    }
 }
-
-database_url =os.environ.get('DATABASE_URL')
-DATABASES["default"] = dj_database_url.parse(database_url) 
-
+#   Server [localhost]:
+# Database [postgres]:
+# Port [5432]:
+# Username [postgres]:
+# Password for user postgres:
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
