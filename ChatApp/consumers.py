@@ -1,6 +1,8 @@
 # consumers.py
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
+# import from channels channel layers to send and receive messages
+from channels.layers import DEFAULT_CHANNEL_LAYER
 
 
 
