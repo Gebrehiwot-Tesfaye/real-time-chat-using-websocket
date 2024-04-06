@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from channels import DEFAULT_CHANNEL_LAYER
+
 import dj_database_url
 from pathlib import Path
 import os
@@ -72,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ChatProject.wsgi.application'
 # ASGI_APPLICATION = "ChatProject.asgi.application"
-CHANNEL_LAYERS = {
+DEFAULT_CHANNEL_LAYER = {
    
     "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
