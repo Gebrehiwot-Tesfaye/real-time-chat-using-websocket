@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=m1^$ql(%@l&m_d()&st30d!b^hc5cjl5@9!+*mlheo)v&o(y=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'ChatProject.wsgi.application'
+WSGI_APPLICATION = 'ChatProject.wsgi.application'
 ASGI_APPLICATION = "ChatProject.asgi.application"
 CHANNEL_LAYERS = {
    
@@ -91,14 +91,16 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
    'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'postgres',
-       'USER': 'postgres',
-       'PASSWORD':'admin',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'academate',
+       'USERNAME': 'academate_user',
+       'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
        'HOST': 'localhost',
        'PORT': '5432'
    }
 }
+
+DATABASES={'default':dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 #   Server [localhost]:
 # Database [postgres]:
 # Port [5432]:
