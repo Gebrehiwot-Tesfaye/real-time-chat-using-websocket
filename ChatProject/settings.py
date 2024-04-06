@@ -75,10 +75,19 @@ TEMPLATES = [
 
 # WSGI_APPLICATION = 'ChatProject.wsgi.application'
 ASGI_APPLICATION = "ChatProject.asgi.application"
-DEFAULT_CHANNEL_LAYER = {
-   
-    "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
+# settings.py
+
+# settings.py for production
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
 }
+
 
 
 # Database
