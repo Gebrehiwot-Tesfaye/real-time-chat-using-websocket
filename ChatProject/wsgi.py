@@ -20,7 +20,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
-from django.core.asgi import get_wsgi_application
+from django.core.wsgi import get_wsgi_application
 from ChatApp import routing
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ChatProject.settings')
