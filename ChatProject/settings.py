@@ -1,7 +1,8 @@
 
 
 from pathlib import Path
-
+import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -63,14 +64,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ChatProject.wsgi.application'
 ASGI_APPLICATION = "ChatProject.asgi.application"
 CHANNEL_LAYERS = {
-'default': {
-'BACKEND': 'channels_redis.core.RedisChannelLayer',
-'CONFIG': {
-"hosts": [('127.0.0.1', 8001)],
-},
-},
-}
 
+    "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
+}
 
 
 # Database
@@ -86,14 +82,17 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'postgres',
-       'USER': 'postgres',
-       'PASSWORD':'admin',
+      'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'academate',
+       'USERNAME': 'academate_user',
+       'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
        'HOST': 'localhost',
-       'PORT': ''
+       'PORT': '5431'
    }
 }  
+
+database_url =os.environ.get('DATABASE_URL')
+DATABASES["default"] = dj_database_url.parse(database_url) 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
