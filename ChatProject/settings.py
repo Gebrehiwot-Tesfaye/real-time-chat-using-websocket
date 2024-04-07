@@ -87,7 +87,7 @@ DATABASES = {
        'USERNAME': 'academate_user',
        'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
        'HOST': 'localhost',
-       'PORT': '5431'
+       'PORT': ''
    }
 }  
 
