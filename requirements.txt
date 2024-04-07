@@ -37,6 +37,8 @@ bcrypt==4.0.1
 # certifi==2024.2.2
 # cffi==1.16.0
 channels==4.0.0
+channels @ git+https://github.com/django/channels.git@42bf4a3d0de71f2401c3a759068a817d40578f0c
+channels-redis==4.2.0
 # charset-normalizer==3.3.2
 # click==8.1.7
 # colorama==0.4.6

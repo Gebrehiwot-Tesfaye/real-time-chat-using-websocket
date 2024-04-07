@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academate</title>
+    <title>Academate Room</title>
 </head>
 <body>
     <div class="parent">
         <div class="child">
-            <h1>Enter-Academate-chat-Room</h1>
+            <h1>Acadmemate Room</h1>
             <form action="" method="POST">
                 {% csrf_token %}
                 <label for="">Username</label><br>
@@ -30,7 +30,7 @@
 }
 
 .parent {
-    background-color: #DAAD86;
+    background-color: #eeeeee;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -40,9 +40,9 @@
 
 .child {
     display: flex;
-    background-color: #659DBD;
+    background-color: #F7F9F6;
     height: 80vh;
-    width: 50%;
+    width: 60%;
     border-radius: 10px;
     flex-direction: column;
     align-items: center;
@@ -52,6 +52,8 @@
 
 form {
     width: 80%;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 input {
@@ -63,7 +65,7 @@ input {
 }
 
 button {
-    background-color: #DAAD86;
+    background-color: #007BFF;
     padding: 10px;
     color: white;
     border: none;
