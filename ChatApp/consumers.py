@@ -1,15 +1,13 @@
 # consumers.py
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-# import from channels channel layers to send and receive messages
-
-
-
+from channels.db import database_sync_to_async
+from .models import Room, Message
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
+        self.room_group_name = f'chat_{self.room_name}'
 
         # Join room group
         await self.channel_layer.group_add(
@@ -26,11 +24,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-    # Receive message from WebSocket
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
         sender = text_data_json['sender']
+
+        # Save the message to the database
+        await self.save_message(self.room_name, sender, message)
 
         # Send message to room group
         await self.channel_layer.group_send(
@@ -42,7 +42,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             }
         )
 
-    # Receive message from room group
     async def chat_message(self, event):
         message = event['message']
         sender = event['sender']
@@ -52,3 +51,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'message': message,
             'sender': sender
         }))
+
+    @database_sync_to_async
+    def save_message(self, room_name, sender, message):
+        """
+        Save message details in the database using the provided room name, sender, and message.
+        """
+        room, _ = Room.objects.get_or_create(room_name=room_name)
+        Message.objects.create(room=room, sender=sender, message=message)
