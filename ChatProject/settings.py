@@ -1,8 +1,8 @@
 
 
 from pathlib import Path
-import os
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -82,17 +82,19 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'academate',
-       'USERNAME': 'academate_user',
-       'PASSWORD':'nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr',
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+       'NAME': 'postgres',
+       'USER': 'postgres',
+       'PASSWORD':'admin',
        'HOST': 'localhost',
        'PORT': ''
    }
 }  
 
-database_url =os.environ.get('DATABASE_URL')
-DATABASES["default"] = dj_database_url.parse(database_url) 
+
+
+
+DATABASES["default"] = dj_database_url.parse("postgres://academate_user:nvoD6b50xSlB9x2R6KPeGbfSja8q4Kbr@dpg-co85tcdjm4es738trqag-a.oregon-postgres.render.com/academate") # type: ignore
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
